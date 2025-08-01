@@ -21,7 +21,7 @@ class PhysicsWorld {
         this.world.allowSleep = true
         this.world.broadphase = new CANNON.SAPBroadphase(this.world)
         this.world.defaultContactMaterial.restitution = 0.3
-        this.world.defaultContactMaterial.friction = 0.4
+        this.world.defaultContactMaterial.friction = 1
     }
     
     createFloor(){
@@ -43,6 +43,13 @@ class PhysicsWorld {
             this.world.addBody(body)
         }
         
+    }
+    
+    addConstraint(...constraints){
+        for (let constraint of constraints) {
+            this.world.addConstraint(constraint)
+        }
+        console.log(this.world.constraints === undefined)
     }
 }
 

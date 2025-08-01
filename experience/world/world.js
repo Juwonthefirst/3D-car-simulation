@@ -1,6 +1,8 @@
 import * as THREE from '../../modules/three.module.js';
 import { scene } from '../scene.js';
 import { car } from './car.js';
+import { camera } from '../camera.js';
+
 
 class World {
     constructor() {
@@ -20,6 +22,7 @@ class World {
     }
     
     createSunLight() {
+        scene.add(new THREE.AxesHelper(3))
         this.sunlight = new THREE.DirectionalLight(0xffffff, 2)
         this.ambientLight = new THREE.AmbientLight(0xffffff, 0.1)
         scene.add(this.ambientLight, this.sunlight)
@@ -27,6 +30,11 @@ class World {
     
     createCar(){
         scene.add(car.mesh)
+    }
+    
+    positionPlayerCamera(){
+        const cameraOffset = new THREE.Vector3(1, 2, 0)
+        car.position
     }
     
     update() {
