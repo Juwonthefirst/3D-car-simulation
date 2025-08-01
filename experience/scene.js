@@ -3,6 +3,7 @@ import * as THREE from '../modules/three.module.js';
 class Scene {
     constructor() {
         this.instance = new THREE.Scene()
+       
     }
     
     add(...objects){

@@ -18,6 +18,8 @@ export class Renderer {
         })
         this.instance.setSize(size.width, size.height)
         this.instance.setPixelRatio(size.pixelRatio)
+        this.instance.shadowMap.enabled = true
+        this.instance.shadowMap.type = THREE.PCFSoftShadowMap
     }
     
     resize(){

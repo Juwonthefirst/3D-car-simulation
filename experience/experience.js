@@ -3,7 +3,7 @@ import { size } from './utils/sizes.js';
 import { Renderer } from './renderer.js';
 import { camera } from './camera.js';
 import { world } from './world/world.js';
-
+import { physicsWorld } from './physics/world.js';
 
 class Experience {
     constructor(canvas) {
@@ -13,18 +13,14 @@ class Experience {
         clock.on('tick', () => {
             this.renderer.update()
             world.update()
-            
+            physicsWorld.update()
+            camera.update()
         })
         
         size.on('resize', () => {
             this.renderer.resize()
             camera.resize()
         })
-    }
-    
-    play(canvas) {
-        
-        
     }
     
 }

@@ -1,55 +1,36 @@
 import * as THREE from '../../modules/three.module.js';
 import { scene } from '../scene.js';
-import { Tree } from './tree.js';
+import { car } from './car.js';
 
 class World {
     constructor() {
-        this.forest = new Tree()
         this.createFloor()
         this.createSunLight()
-        this.addTrees()
-        scene.add(
-            new THREE.Mesh(
-                new THREE.BoxGeometry(),
-                new THREE.MeshBasicMaterial({color: 'black'})
-            )
-        )
+        this.createCar()
+        
     }
     
     createFloor() {
         this.floorShape = new THREE.PlaneGeometry(200, 200)
         this.floorMaterial = new THREE.MeshStandardMaterial()
         this.floor = new THREE.Mesh(this.floorShape, this.floorMaterial)
+        this.floor.name = 'world_floor'
         this.floor.rotation.x = Math.PI * -0.5
         scene.add(this.floor)
     }
     
     createSunLight() {
         this.sunlight = new THREE.DirectionalLight(0xffffff, 2)
-        scene.add(this.sunlight)
+        this.ambientLight = new THREE.AmbientLight(0xffffff, 0.1)
+        scene.add(this.ambientLight, this.sunlight)
     }
     
-    addTrees() {
-        for (let i = 0; i < 10; i++) {
-            const treeSize = Math.random() * 3
-            console.log(treeSize)
-            
-            const tree = this.forest.createTree(
-                treeSize,
-                {
-                    x: Math.random() * 3,
-                    y: treeSize / 2,
-                    z: Math.random() * 3
-                }
-            )
-            console.log(tree)
-            scene.add(tree)
-        }
+    createCar(){
+        scene.add(car.mesh)
     }
     
     update() {
-        
-        
+        car.update()
     }
 }
 
