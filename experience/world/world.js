@@ -13,7 +13,7 @@ class World {
     }
     
     createFloor() {
-        this.floorShape = new THREE.PlaneGeometry(200, 200)
+        this.floorShape = new THREE.PlaneGeometry(2000, 2000)
         this.floorMaterial = new THREE.MeshStandardMaterial()
         this.floor = new THREE.Mesh(this.floorShape, this.floorMaterial)
         this.floor.name = 'world_floor'
@@ -22,7 +22,7 @@ class World {
     }
     
     createSunLight() {
-        scene.add(new THREE.AxesHelper(3))
+        scene.add(new THREE.AxesHelper(10))
         this.sunlight = new THREE.DirectionalLight(0xffffff, 2)
         this.ambientLight = new THREE.AmbientLight(0xffffff, 0.1)
         scene.add(this.ambientLight, this.sunlight)
@@ -30,11 +30,6 @@ class World {
     
     createCar(){
         scene.add(car.mesh)
-    }
-    
-    positionPlayerCamera(){
-        const cameraOffset = new THREE.Vector3(1, 2, 0)
-        car.position
     }
     
     update() {

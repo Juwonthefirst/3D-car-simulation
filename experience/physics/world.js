@@ -20,7 +20,7 @@ class PhysicsWorld {
         this.world.gravity.set(0, -(this.#gravity), 0)
         this.world.allowSleep = true
         this.world.broadphase = new CANNON.SAPBroadphase(this.world)
-        this.world.defaultContactMaterial.restitution = 0.3
+        this.world.defaultContactMaterial.restitution = 0
         this.world.defaultContactMaterial.friction = 1
     }
     
@@ -49,7 +49,6 @@ class PhysicsWorld {
         for (let constraint of constraints) {
             this.world.addConstraint(constraint)
         }
-        console.log(this.world.constraints === undefined)
     }
 }
 

@@ -29,6 +29,8 @@ class Car {
         this.createCarTyreModel()
         this.createCarBodyModel()
         this.carPhysics = new PhysicsCar()
+        this.currentVelocity = 0
+        window.physics = this.carPhysics
     }
     
     createCarBodyModel() {
@@ -58,13 +60,13 @@ class Car {
     }
     
     update() {
-        const carPartsToUpdate = [/*'frontTyreJoint', 'backTyreJoint', */'carTyre1', 'carTyre2', 'carTyre3', 'carTyre4', 'carBase']
+        const carPartsToUpdate = ['carTyre1', 'carTyre2', 'carTyre3', 'carTyre4', 'carBase']
         for (let carPart of carPartsToUpdate) {
             this[carPart].position.copy(this.carPhysics[carPart].position)
             this[carPart].quaternion.copy(this.carPhysics[carPart].quaternion)
         }
+        this.currentVelocity = this.carPhysics.getCurrentVelocity()
         
-        console.log(this.carPhysics.carBase.velocity)
     }
 }
 

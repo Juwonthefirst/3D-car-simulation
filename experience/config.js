@@ -1,6 +1,6 @@
 export const carPartsSizes = {
     carBase: {
-        mass: 10,
+        mass: 50,
         width: 1,
         height: 0.25,
         depth: 0.5,
@@ -13,10 +13,15 @@ export const carPartsSizes = {
     },
     
     carTyre: {
-        mass: 0.5,
-        radius: 0.3,
-        height: 0.2,
+        mass: 20,
+        radius: 0.25,
+        height: 0.25,
         radiusSegments: 64,
     }
     
+}
+
+export const carSpeedConfig = {
+    maxAngularVelocity: 1000,
+    maxMotorForce: 2
 }
