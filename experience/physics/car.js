@@ -8,17 +8,21 @@ const carBaseConfig = carPartsSizes.carBase
 
 
 export class PhysicsCar {
+    #velocity
     constructor() {
         this.maxAngularVelocity = carSpeedConfig.maxAngularVelocity
         this.maxMotorForce = carSpeedConfig.maxMotorForce
-        
         this.maxVelocity = this.maxAngularVelocity * carTyreConfig.radius
         this.#createCarBody()
         this.#createCarTyre()
         this.#applyConstraints()
-       // this.accelerate()
-        setTimeout(() => { this.accelerate() }, 2000)
+        this.#velocity = 0
     }
+    
+    get velocity() {
+        return this.carBase.velocity.length().toFixed(2)
+    }
+    
     
     #createCarBody() {
         this.carBase = new CANNON.Body({
@@ -48,7 +52,7 @@ export class PhysicsCar {
             const carTyreBody = new CANNON.Body(tyreProperties)
             carTyreBody.quaternion.setFromAxisAngle(new CANNON.Vec3(-1, 0, 0), Math.PI * 0.5)
             carTyreBody.position.set(xPosition, carTyreConfig.radius, zPosition)
-            carTyreBody.angularDamping = 0.5
+            //carTyreBody.angularDamping = 0.5
             return carTyreBody
         }
         
@@ -69,25 +73,24 @@ export class PhysicsCar {
                 this.carBase, object, {
                     pivotA: new CANNON.Vec3(xPosition, 0, zPosition),
                     pivotB: new CANNON.Vec3(0, 0, 0),
-                    axisA: new CANNON.Vec3(0, 0, 1),
+                    axisA: new CANNON.Vec3(0, 0, -1),
                     axisB: new CANNON.Vec3(0, 1, 0),
                 }
             )
             
-            if (hasMotor) constraint.setMotorSpeed(this.maxAngularVelocity)
             return constraint
         }
         
         this.frontTyreHinge1 = createHingeConstraintOnCarBase(this.carTyre1, -0.4, 0.5)
         this.frontTyreHinge2 = createHingeConstraintOnCarBase(this.carTyre2, -0.4, -0.5)
-        this.backTyreHinge1 = createHingeConstraintOnCarBase(this.carTyre3, 0.4, 0.5, true)
-        this.backTyreHinge2 = createHingeConstraintOnCarBase(this.carTyre4, 0.4, -0.5, true)
+        this.backTyreHinge1 = createHingeConstraintOnCarBase(this.carTyre3, 0.4, 0.5)
+        this.backTyreHinge2 = createHingeConstraintOnCarBase(this.carTyre4, 0.4, -0.5)
         
         this.backTyreHinges = [this.backTyreHinge1, this.backTyreHinge2]
         physicsWorld.addConstraint(this.frontTyreHinge1, this.frontTyreHinge2, this.backTyreHinge1, this.backTyreHinge2)
     }
     
-    wakeUpCar(){
+    wakeUpCar() {
         this.carBase.wakeUp()
         this.tyres.forEach((tyre) => tyre.wakeUp())
     }
@@ -98,6 +101,7 @@ export class PhysicsCar {
         this.backTyreHinges.forEach((hinge) => {
             hinge.enableMotor()
             hinge.setMotorMaxForce(this.maxMotorForce)
+            hinge.setMotorSpeed(this.maxAngularVelocity)
         })
     }
     
@@ -108,15 +112,13 @@ export class PhysicsCar {
     }
     
     reverseAcceleration() {
+        console.log('reversing')
         this.wakeUpCar()
         this.backTyreHinges.forEach((hinge) => {
             hinge.enableMotor()
             hinge.setMotorMaxForce(this.maxMotorForce * -1)
+            hinge.setMotorSpeed(this.maxAngularVelocity)
         })
-    }
-    
-    getCurrentVelocity(){
-        return this.carBase.velocity.length()
     }
     
     

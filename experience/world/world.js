@@ -13,7 +13,7 @@ class World {
     }
     
     createFloor() {
-        this.floorShape = new THREE.PlaneGeometry(2000, 2000)
+        this.floorShape = new THREE.PlaneGeometry(20000, 20000)
         this.floorMaterial = new THREE.MeshStandardMaterial()
         this.floor = new THREE.Mesh(this.floorShape, this.floorMaterial)
         this.floor.name = 'world_floor'

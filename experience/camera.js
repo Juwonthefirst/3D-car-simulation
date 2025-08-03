@@ -8,17 +8,14 @@ import { car } from './world/car.js';
 class Camera {
     constructor() {
         this.createCamera()
-        this.createControls()
+        //this.createControls()
     }
     
     createCamera() {
-        this.instance = new THREE.PerspectiveCamera(
-            60,
-            size.width / size.height,
-            0.1,
-            100
-        )
+        const fov = (size.width > size.height)? 30 : 60
+        const aspect = size.width / size.height
         
+        this.instance = new THREE.PerspectiveCamera(fov, aspect, 0.1, 100)
         this.instance.position.set(0, 1, 7)
         scene.add(this.instance)
     }
@@ -35,16 +32,16 @@ class Camera {
     }
     
     positionCameraOnPlayer() {
-        const cameraOffset = new THREE.Vector3(2, 1, 0)
+        const cameraOffset = new THREE.Vector3(2.5, 0.5, 0)
         const carBaseCurrentPosition = car.carBase.position.clone()
         const cameraWorldOffset = car.carBase.localToWorld(cameraOffset)
         
-        this.instance.position.lerp(cameraWorldOffset, 0.2)
+        this.instance.position.lerp(cameraWorldOffset, 0.5)
         this.instance.lookAt(carBaseCurrentPosition)
     }
     
     update() {
-        this.controls.update()
+        //this.controls.update()
         this.positionCameraOnPlayer()
     }
     

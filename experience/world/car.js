@@ -1,6 +1,7 @@
 import * as THREE from '../../modules/three.module.js';
 import { PhysicsCar } from '../physics/car.js';
 import { carPartsSizes } from '../config.js';
+import { Controls } from '../controls.js';
 
 const carTyreConfig = carPartsSizes.carTyre
 const carTyreJointsConfig = carPartsSizes.carTyreJoint
@@ -29,7 +30,8 @@ class Car {
         this.createCarTyreModel()
         this.createCarBodyModel()
         this.carPhysics = new PhysicsCar()
-        this.currentVelocity = 0
+        this.carControls = new Controls(this.carPhysics)
+        
         window.physics = this.carPhysics
     }
     
@@ -65,9 +67,15 @@ class Car {
             this[carPart].position.copy(this.carPhysics[carPart].position)
             this[carPart].quaternion.copy(this.carPhysics[carPart].quaternion)
         }
-        this.currentVelocity = this.carPhysics.getCurrentVelocity()
         
+        document.querySelector('.velocity').textContent = `velocity(m/s): ${this.carPhysics.velocity}`
+        document.querySelector('.distance').textContent = `distance covered(m): ${this.carPhysics.carBase.position.length().toFixed(2)}`
+        /*this.carPhysics.tyres.forEach((tyre, index) => {
+            if (index < 2) return 
+            tyre.applyTorque(new THREE.Vector3(0, 0, 20))
+        })*/
     }
+    
 }
 
 const car = new Car()
