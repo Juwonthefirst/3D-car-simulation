@@ -4,7 +4,8 @@ export class Controls {
     constructor(body) {
        this.body = body
        console.log(body)
-       this.addAccelerateControls()
+       //this.addAccelerateControls()
+       this.addTiltControls()
     }
     
     addAccelerateControls(){
@@ -22,5 +23,11 @@ export class Controls {
         
         window.addEventListener('touchend', () => {handleMouseOrTouchLeave()})
         window.addEventListener('mouseup', () => {handleMouseOrTouchLeave()})
+    }
+    
+    addTiltControls(){
+       window.addEventListener('deviceorientation', (event) => {
+            console.log(event.gamma)
+       })
     }
 }
