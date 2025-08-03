@@ -106,6 +106,7 @@ export class PhysicsCar {
     }
     
     decelerate() {
+        console.log('slowing down')
         this.backTyreHinges.forEach((hinge) => {
             hinge.disableMotor()
         })
@@ -116,7 +117,7 @@ export class PhysicsCar {
         this.wakeUpCar()
         this.backTyreHinges.forEach((hinge) => {
             hinge.enableMotor()
-            hinge.setMotorMaxForce(this.maxMotorForce * -1)
+            hinge.setMotorMaxForce(-this.maxMotorForce)
             hinge.setMotorSpeed(this.maxAngularVelocity)
         })
     }

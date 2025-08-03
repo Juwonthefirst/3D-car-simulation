@@ -36,7 +36,7 @@ class Camera {
         const carBaseCurrentPosition = car.carBase.position.clone()
         const cameraWorldOffset = car.carBase.localToWorld(cameraOffset)
         
-        this.instance.position.lerp(cameraWorldOffset, 0.5)
+        this.instance.position.lerp(cameraWorldOffset, 0.7)
         this.instance.lookAt(carBaseCurrentPosition)
     }
     

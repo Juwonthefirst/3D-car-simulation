@@ -22,6 +22,7 @@ class PhysicsWorld {
         this.world.broadphase = new CANNON.SAPBroadphase(this.world)
         this.world.defaultContactMaterial.restitution = 0
         this.world.defaultContactMaterial.friction = 1
+        this.world.solver.iterations = 25
     }
     
     createFloor(){
