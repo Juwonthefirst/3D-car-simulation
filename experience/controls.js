@@ -30,6 +30,7 @@ export class Controls {
        
        window.addEventListener('deviceorientation', (event) => {
            console.log('juwon')
+           alert(event.gamma)
        })
     }
 }
