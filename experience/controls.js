@@ -1,4 +1,5 @@
 import { size } from './utils/sizes.js';
+import {camera} from './camera.js';
 
 export class Controls {
     constructor(body) {
@@ -30,6 +31,7 @@ export class Controls {
        
        window.addEventListener('deviceorientation', (event) => {
            console.log(event.gamma)
+           camera.instance.rotateY(event.gamma)
            //alert(event.gamma)
        }, true)
     }
