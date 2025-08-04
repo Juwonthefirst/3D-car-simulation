@@ -68,7 +68,7 @@ export class PhysicsCar {
     
     #applyConstraints() {
         
-        const createHingeConstraintOnCarBase = (object, xPosition, zPosition, hasMotor = false) => {
+        const createHingeConstraintOnCarBase = (object, xPosition, zPosition) => {
             const constraint = new CANNON.HingeConstraint(
                 this.carBase, object, {
                     pivotA: new CANNON.Vec3(xPosition, 0, zPosition),
