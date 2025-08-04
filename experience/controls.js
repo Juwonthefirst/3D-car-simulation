@@ -3,7 +3,6 @@ import { size } from './utils/sizes.js';
 export class Controls {
     constructor(body) {
        this.body = body
-       console.log(body)
        //this.addAccelerateControls()
        this.addTiltControls()
     }
@@ -26,8 +25,11 @@ export class Controls {
     }
     
     addTiltControls(){
+        
+        //DeviceOrientationEvent.requestPermission()
+       
        window.addEventListener('deviceorientation', (event) => {
-           document.querySelector('.tilt').textContent = `y tilt: ${event.gamma}`
+           console.log('juwon')
        })
     }
 }

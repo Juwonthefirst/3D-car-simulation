@@ -27,7 +27,7 @@ class Camera {
     
     resize() {
         this.instance.aspect = size.width / size.height
-        if (size.width > size.height) this.instance.fov = 30
+        this.instance.fov = (size.width > size.height)? 30 : 60
         this.instance.updateProjectionMatrix()
     }
     
