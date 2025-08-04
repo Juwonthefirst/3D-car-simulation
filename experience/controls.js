@@ -27,7 +27,7 @@ export class Controls {
     
     addTiltControls(){
        window.addEventListener('deviceorientation', (event) => {
-            console.log(event.gamma)
+           document.querySelector('.tilt').textContent = `y tilt: ${event.gamma}`
        })
     }
 }
