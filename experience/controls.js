@@ -29,8 +29,8 @@ export class Controls {
         //DeviceOrientationEvent.requestPermission()
        
        window.addEventListener('deviceorientation', (event) => {
-           console.log('juwon')
-           alert(event.gamma)
-       })
+           console.log(event.gamma)
+           //alert(event.gamma)
+       }, true)
     }
 }
