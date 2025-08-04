@@ -12,7 +12,7 @@
     z-index: -1;
 }
 
-.velocity, .distance{
+.velocity, .distance, .tilt{
     color: white;
 }
 
