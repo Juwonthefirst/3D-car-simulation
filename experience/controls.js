@@ -4,7 +4,7 @@ import { camera } from './camera.js';
 export class Controls {
     constructor(body) {
         this.body = body
-        this.addAccelerateControls()
+        //this.addAccelerateControls()
         this.addTiltControls()
     }
     
