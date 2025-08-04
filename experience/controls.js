@@ -5,7 +5,7 @@ export class Controls {
     constructor(body) {
         this.body = body
         //this.addAccelerateControls()
-        //this.addTiltControls()
+        this.addTiltControls()
     }
     
     addAccelerateControls() {
