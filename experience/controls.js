@@ -31,7 +31,8 @@ export class Controls {
        
        window.addEventListener('deviceorientation', (event) => {
            console.log(event.gamma)
-           camera.instance.rotateY(event.gamma)
+           //camera.instance.rotateY(event.gamma)
+           document.querySelector('.tilt').textContent = `y tilt: ${event.gamma}`
            //alert(event.gamma)
        }, true)
     }
