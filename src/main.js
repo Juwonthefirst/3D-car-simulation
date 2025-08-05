@@ -1,4 +1,5 @@
 import { Experience } from './experience/experience.js';
+import './style.css'
 
 const canvas = document.querySelector('canvas.webgl')
 
