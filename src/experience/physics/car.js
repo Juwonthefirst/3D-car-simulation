@@ -1,4 +1,4 @@
-import * as CANNON from '../../modules/cannon-es.js';
+import * as CANNON from 'cannon-es';
 import { physicsWorld } from './world.js';
 import { carPartsSizes, carSpeedConfig } from '../config.js';
 

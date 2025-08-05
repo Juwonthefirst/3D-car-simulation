@@ -1,4 +1,4 @@
-import * as CANNON from '../../modules/cannon-es.js';
+import * as CANNON from 'cannon-ez';
 import { clock } from '../utils/clock.js';
 
 

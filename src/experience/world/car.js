@@ -1,4 +1,4 @@
-import * as THREE from '../../modules/three.module.js';
+import * as THREE from 'three';
 import { PhysicsCar } from '../physics/car.js';
 import { carPartsSizes } from '../config.js';
 import { Controls } from '../controls.js';

@@ -1,4 +1,4 @@
-import * as THREE from '../modules/three.module.js';
+import * as THREE from 'three';
 
 class Scene {
     constructor() {

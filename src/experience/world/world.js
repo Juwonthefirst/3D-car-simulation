@@ -1,4 +1,4 @@
-import * as THREE from '../../modules/three.module.js';
+import * as THREE from 'three';
 import { scene } from '../scene.js';
 import { car } from './car.js';
 import { camera } from '../camera.js';

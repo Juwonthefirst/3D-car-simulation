@@ -1,4 +1,4 @@
-import { ConvexPolyhedron, Vec3 } from '../../../modules/cannon-es.js';
+import { ConvexPolyhedron, Vec3 } from 'cannon-es';
 
  const createPhysicsShapeFromGeometry = (geometry) => {
 	const vertices = []
