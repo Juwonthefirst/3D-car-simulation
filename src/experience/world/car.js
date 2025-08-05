@@ -19,7 +19,7 @@ class Car {
             carTyreConfig.radiusSegments
         )
         
-        this.carTyreMaterial = new THREE.MeshStandardMaterial({ color: 'black', wireframe: true })
+        this.carTyreMaterial = new THREE.MeshStandardMaterial({ color: 'black', wireframe: false })
         this.tyreJointGeometry = new THREE.CylinderGeometry(
             carTyreJointsConfig.radius,
             carTyreJointsConfig.radius,
