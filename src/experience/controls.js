@@ -11,7 +11,11 @@ export class Controls {
     addAccelerateControls() {
         const handleMouseOrTouchEnter = (event) => {
             const touchCoordinate = event.clientX || event.touches[0].clientX
-            if (touchCoordinate > size.width / 2) this.body.accelerate()
+            if (touchCoordinate > size.width / 2) {
+                camera.playerCameraDirection = "back"
+                this.body.accelerate()
+                
+            }
             
             else this.body.reverseAcceleration()
         }

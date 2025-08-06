@@ -6,9 +6,16 @@ import { car } from './world/car.js';
 
 
 class Camera {
+    #playerCameraDirection
     constructor() {
+        this.playerCameraOffset = new THREE.Vector3(2.5, 0.5, 0)
         this.createCamera()
         //this.createControls()
+    }
+    
+    set playerCameraDirection(direction){
+        if(direction !== "front" || direction !== "back") return 
+        this.playerCameraOffset.x = (direction === "front")? -2.5 : 2.5
     }
     
     createCamera() {
@@ -31,10 +38,9 @@ class Camera {
         this.instance.updateProjectionMatrix()
     }
     
-    positionCameraOnPlayer() {
-        const cameraOffset = new THREE.Vector3(2.5, 0.5, 0)
+    positionCameraToPlayer() {
         const carBaseCurrentPosition = car.carBase.position.clone()
-        const cameraWorldOffset = car.carBase.localToWorld(cameraOffset)
+        const cameraWorldOffset = car.carBase.localToWorld(this.playerCameraOffset.clone())
         
         this.instance.position.lerp(cameraWorldOffset, 0.7)
         this.instance.lookAt(carBaseCurrentPosition)
@@ -42,7 +48,8 @@ class Camera {
     
     update() {
         //this.controls.update()
-        this.positionCameraOnPlayer()
+        this.positionCameraToPlayer()
+        console.log(this.instance.position)
     }
     
 }

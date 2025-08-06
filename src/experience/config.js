@@ -22,6 +22,6 @@ export const carPartsSizes = {
 }
 
 export const carSpeedConfig = {
-    maxAngularVelocity: 225,
-    maxMotorForce: 4
+    maxAngularVelocity: 500,
+    maxMotorForce: 2
 }
