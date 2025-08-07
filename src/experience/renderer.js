@@ -3,7 +3,6 @@ import { size } from './utils/sizes.js';
 import { camera } from './camera.js';
 import { scene } from './scene.js';
 
-
 export class Renderer {
     constructor(canvas) {
         this.canvas = canvas

@@ -57,7 +57,6 @@ class Car {
         this.carTyre3 = new THREE.Mesh(this.carTyreGeometry, this.carTyreMaterial)
         this.carTyre4 = new THREE.Mesh(this.carTyreGeometry, this.carTyreMaterial)
         
-
         this.mesh.add(this.carTyre1, this.carTyre2, this.carTyre3, this.carTyre4,/* this.frontTyreJoint, this.backTyreJoint*/)
     }
     
@@ -67,13 +66,9 @@ class Car {
             this[carPart].position.copy(this.carPhysics[carPart].position)
             this[carPart].quaternion.copy(this.carPhysics[carPart].quaternion)
         }
-        
+        //this.carControls.update()
         document.querySelector('.velocity').textContent = `velocity(m/s): ${this.carPhysics.velocity}`
         document.querySelector('.distance').textContent = `distance covered(m): ${this.carPhysics.carBase.position.length().toFixed(2)}`
-        /*this.carPhysics.tyres.forEach((tyre, index) => {
-            if (index < 2) return 
-            tyre.applyTorque(new THREE.Vector3(0, 0, 20))
-        })*/
     }
     
 }

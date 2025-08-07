@@ -2,7 +2,7 @@ import * as THREE from 'three';
 import { scene } from '../scene.js';
 import { car } from './car.js';
 import { camera } from '../camera.js';
-
+import { createRamp } from './obstacles/ramp.js'
 
 class World {
     constructor() {
@@ -14,18 +14,21 @@ class World {
     
     createFloor() {
         this.floorShape = new THREE.PlaneGeometry(20000, 20000)
-        this.floorMaterial = new THREE.MeshStandardMaterial()
+        this.floorMaterial = new THREE.MeshStandardMaterial({
+            "roughness": 0.4,
+            "metalness": 0.3
+        })
         this.floor = new THREE.Mesh(this.floorShape, this.floorMaterial)
         this.floor.name = 'world_floor'
         this.floor.rotation.x = Math.PI * -0.5
+        this.floor.position.y = -0.08
         scene.add(this.floor)
     }
     
     createSunLight() {
         scene.add(new THREE.AxesHelper(10))
         this.sunlight = new THREE.DirectionalLight(0xffffff, 2)
-        this.ambientLight = new THREE.AmbientLight(0xffffff, 0.1)
-        scene.add(this.ambientLight, this.sunlight)
+        scene.add(this.sunlight)
     }
     
     createCar(){
